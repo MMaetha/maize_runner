@@ -1,3 +1,11 @@
+# data files
+*.txt
+*.csv
+
+# sample data files
+*.fas
+*.FASTA 
+
 # Prerequisites
 *.d
 
