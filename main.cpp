@@ -118,7 +118,7 @@ int main(int argc, char **argv) {
     //return 0;
 
     ffp = OpenFASTA("sample_seq\\TAIR9_TE.fas");
-    c = 1;
+    c = 2;
     while (ReadFASTA(ffp, &seq, &name, &L)) {
         //printf("%d\n",c);
         //printf("name: %s\n", name);
@@ -136,7 +136,7 @@ int main(int argc, char **argv) {
         free(seq);
         free(name);
 
-        if(c>=1) break;
+        if(c>=2) break;
             printf("Search Map : c = %d\n", c);
         //getchar();
         c++;
