@@ -29,7 +29,7 @@ void build_map(char* seq)
         //free(kgram);
 
         if(i > 10000)
-            break;
+        	break;
     }
     // printf("Complete\n");
 }
