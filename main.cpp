@@ -46,6 +46,7 @@ void search_map(char* seq)
 
         //fprintf(outputFile,"%s\n",kgram);
         for(auto it = kmap.equal_range(kgram).first; it!=kmap.equal_range(kgram).second; ++it){
+            printf("%d\n", (*it).second-i);
             fprintf(outputFile,"%d\n", (*it).second-i);
         }
         //fprintf(outputFile,"count na ja : %lu \n",kmap.count(kgram));
