@@ -90,7 +90,7 @@ int main(int argc, char **argv) {
     int L;
     int c;
     /* argv[1] is the name of a FASTA file */
-    ffp = OpenFASTA("sample_seq\\IRGSP-1.0_genome.fasta");
+    ffp = OpenFASTA("sample_seq/IRGSP-1.0_genome.fasta");
     printf("openFASTA complete\n");
     c = 1;
     int targetCms = atoi(argv[1]);
@@ -121,7 +121,7 @@ int main(int argc, char **argv) {
 
     //return 0;
 
-    ffp = OpenFASTA("sample_seq\\TAIR9_TE.fas");
+    ffp = OpenFASTA("sample_seq/TAIR9_TE.fas");
     c = 2;
     while (ReadFASTA(ffp, &seq, &name, &L)) {
         //printf("%d\n",c);
