@@ -18,11 +18,12 @@ void build_map(char* seq)
     for(int i=0; i<len-k+1; i++) {
         char tmp = seq[i+k];
         seq[i+k] = '\0';
-
         string st = string(seq+i);
+        printf("st : %s",st);
         //cout << i << "--" << st << "--" << endl;
         kmap.insert(make_pair(st,i));
         seq[i+k] = tmp;
+        printf("seq[i+k] : %s",seq[i+k]);
        /* if(i % 10000 == 0) {
             printf("%d\n",i);
         } */
@@ -63,6 +64,7 @@ void upup(char* st)
     while(*p != '\0') {
         if((*p >= 'a') && (*p <= 'z')) {
             *p += 'A' - 'a';
+            printf("p : %d *p : %d",p,*p);
         }
         p++;
     }
@@ -89,6 +91,7 @@ int main(int argc, char **argv) {
     int c;
     /* argv[1] is the name of a FASTA file */
     ffp = OpenFASTA("sample_seq\\IRGSP-1.0_genome.fasta");
+    printf("openFASTA complete\n");
     c = 1;
     int targetCms = atoi(argv[1]);
     printf("targetCms = %d\n", targetCms);
