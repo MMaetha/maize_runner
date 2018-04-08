@@ -22,9 +22,9 @@ void build_map(char* seq)
         //cout << i << "--" << st << "--" << endl;
         kmap.insert(make_pair(st,i));
         seq[i+k] = tmp;
-       /* if(i % 10000 == 0) {
-            printf("%d\n",i);
-        } */
+       	// if(i % 10000 == 0) {
+        //    printf("%d\n",i);
+        //} 
         //free(kgram);
 
         if(i > 100000)
@@ -62,7 +62,6 @@ void upup(char* st)
     while(*p != '\0') {
         if((*p >= 'a') && (*p <= 'z')) {
             *p += 'A' - 'a';
-            printf("p : %d *p : %d",p,*p);
         }
         p++;
     }
@@ -77,7 +76,7 @@ int main(int argc, char **argv) {
 
     outputFile = fopen(argv[2],"a");
     if(outputFile == NULL){
-        printf("Cannot open output file.\n");
+          printf("Cannot open output file.\n");
         exit(1);
     }
     else printf("bitch!\n");
@@ -128,11 +127,10 @@ int main(int argc, char **argv) {
         //printf("%s\n\n", seq);
 
         // write file
-       /* fprintf(outputFile,"%d\n",c);
-        fprintf(outputFile,"name: %s\n", name);
-        fprintf(outputFile,"size: %d\n", L);
-        */
-       //build_map(seq);
+       	// fprintf(outputFile,"%d\n",c);
+        // fprintf(outputFile,"name: %s\n", name);
+        // fprintf(outputFile,"size: %d\n", L);
+        //build_map(seq);
         upup(seq);
         search_map(seq);
         free(seq);
