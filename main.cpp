@@ -53,14 +53,18 @@ void search_map(char* seq)
             // printf("%d\n", (*it).second-i);
             v.push_back(it->second - i);
         }
-        sort(v.begin(), v.end());
-        for(int i=0; i<v.size(); i++) {
-        	fprintf(outputFile, "%d\n", v[i]);
-        }
+        
         //fprintf(outputFile,"count na ja : %lu \n",kmap.count(kgram));
         seq[i+k] = tmp;
         //free(kgram);
     }
+    printf("Mapping complete. Now, we're sorting data.\n");
+    sort(v.begin(), v.end());
+    for(int i=0; i<v.size(); i++) {
+        	fprintf(outputFile, "%d\n", v[i]);
+        }
+    printf("Sorting complete.\n");
+
     //fprintf(outputFile,"Complete\n");
     //fprintf(outputFile,"---------------------------------\n");
 }
