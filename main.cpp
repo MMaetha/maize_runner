@@ -4,10 +4,14 @@
 #include <map>
 #include <cstring>
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
 FILE* outputFile;
+
+
 
 multimap<string,int> kmap;
 int k = 5;
@@ -36,6 +40,7 @@ void build_map(char* seq)
 void search_map(char* seq)
 {
     int len = strlen(seq);
+    vector<int> v;
     for(int i=0; i<len-k+1; i++) {
         char tmp = seq[i+k];
         seq[i+k] = '\0';
@@ -45,8 +50,12 @@ void search_map(char* seq)
 
         //fprintf(outputFile,"%s\n",kgram);
         for(auto it = kmap.equal_range(kgram).first; it!=kmap.equal_range(kgram).second; ++it){
-            printf("%d\n", (*it).second-i);
-            fprintf(outputFile,"%d\n", (*it).second-i);
+            // printf("%d\n", (*it).second-i);
+            v.push_back(it->second - i);
+        }
+        sort(v.begin(), v.end());
+        for(int i=0; i<v.size(); i++) {
+        	fprintf(outputFile, "%d\n", v[i]);
         }
         //fprintf(outputFile,"count na ja : %lu \n",kmap.count(kgram));
         seq[i+k] = tmp;
