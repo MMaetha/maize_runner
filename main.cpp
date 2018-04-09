@@ -11,8 +11,6 @@ using namespace std;
 
 FILE* outputFile;
 
-
-
 multimap<string,int> kmap;
 int k = 5;
 
