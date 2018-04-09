@@ -61,6 +61,7 @@ void search_map(char* seq)
     printf("Mapping completed.\n");
     sort(v.begin(), v.end());
     vector<int>::iterator low,up;
+    int freq;
     for(int i=0; i<v.size(); i++) {
     		if(v[i]<0){
     			continue;
@@ -68,8 +69,9 @@ void search_map(char* seq)
     		else{
     			low = lower_bound(v.begin(),v.end(),v[i]);
     			up = upper_bound(v.begin(),v.end(),v[i]);
+    			freq = up-low;
     			if(v[i+1]!=v[i]){
-     				fprintf(outputFile, "%d , %ld\n",v[i],up-low);
+     				fprintf(outputFile, "%d , %d\n",v[i],freq);
     			}
    	   		}       
     	}
