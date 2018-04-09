@@ -69,8 +69,7 @@ void search_map(char* seq)
     			vector<int>::iterator low,up;
     			low = lower_bound(v.begin(),v.end(),v[i]);
     			up = upper_bound(v.begin(),v.end(),v[i]);
-     			}
-     		fprintf(outputFile, "%d , %ld\n",v[i],up-low);
+    			fprintf(outputFile, "%d , %ld\n",v[i],up-low);
     		}
         }
     printf("Sorting complete.\n");
