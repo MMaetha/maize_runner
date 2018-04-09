@@ -114,7 +114,6 @@ int main(int argc, char **argv) {
         if(c==targetCms){
             upup(seq);
             build_map(seq);
-            printf("--- Read chromosome file : c = %d complete ---\n", c);
         }
 
         free(seq);
@@ -123,6 +122,7 @@ int main(int argc, char **argv) {
         c++;
         //break;
     }
+    printf("--- Read chromosome file : c = %d complete ---\n",targetCms);
     CloseFASTA(ffp);
 
     //for(auto it = kmap.begin(); it != kmap.end(); it++) {
