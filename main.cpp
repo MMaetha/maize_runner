@@ -66,11 +66,11 @@ void search_map(char* seq)
     			continue;
     		}
     		else{
-    			vector<int>::iterator low,up;
     			low = lower_bound(v.begin(),v.end(),v[i]);
     			up = upper_bound(v.begin(),v.end(),v[i]);
-    			fprintf(outputFile, "%d , %ld\n",v[i],up-low);
     		}
+  			fprintf(outputFile, "%d , %ld\n",v[i],up-low);
+
         }
     printf("Sorting completed.\n");
     printf("Completed.\n");
@@ -119,7 +119,7 @@ int main(int argc, char **argv) {
         //printf("name: %s\n", name);
         //printf("size: %d\n", L);
         //printf("%s\n\n", seq);
-        printf("Read chromosome file : c = %d\n", c);
+        //printf("Read chromosome file : c = %d\n", c);
         if(c==targetCms){
             upup(seq);
             build_map(seq);
