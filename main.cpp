@@ -66,9 +66,13 @@ void search_map(char* seq)
     			continue;
     		}
     		else{
+    			int max=-1000,place=0;
     			low = lower_bound(v.begin(),v.end(),v[i]);
     			up = upper_bound(v.begin(),v.end(),v[i]);
-    			fprintf(outputFile, "%d , %ld\n",v[i],up-low);
+    			if(v[i+1]!=v[i]){
+    				fprintf(outputFile, "%d , %ld\n",v[i],up-low);
+    			}
+   	   		}       
     	}
     printf("Sorting completed.\n");
     printf("Completed.\n");
