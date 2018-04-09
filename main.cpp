@@ -62,20 +62,21 @@ void search_map(char* seq)
     sort(v.begin(), v.end());
     vector<int>::iterator low,up;
     for(int i=0; i<v.size(); i++) {
+    		int max=-100,place=0;
     		if(v[i]<0){
     			continue;
     		}
     		else{
-    			int max=-100;
     			vector<int>::iterator low,up;
     			low = lower_bound(v.begin(),v.end(),v[i]);
     			up = upper_bound(v.begin(),v.end(),v[i]);
     			fprintf(outputFile, "%d , %ld\n",v[i],up-low);
     			if((up-low)>max){
     				max = up-low;
+    				place = v[i];
     			}
     		}
-    		printf("Maximum frequency is %d\n",max);
+    	printf("Maximum frequency is : %d at %d\n",max,place);
         }
     printf("Sorting complete.\n");
     printf("Complete.\n");
