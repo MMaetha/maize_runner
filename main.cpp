@@ -61,7 +61,9 @@ void search_map(char* seq)
     printf("Mapping complete. Now, we're sorting data.\n");
     sort(v.begin(), v.end());
     for(int i=0; i<v.size(); i++) {
-        	fprintf(outputFile, "%d\n", v[i]);
+    		if(v[i]>=0){
+    			fprintf(outputFile, "%d\n", v[i]);
+    		}
         }
     printf("Sorting complete.\n");
 
