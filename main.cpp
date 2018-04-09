@@ -60,12 +60,20 @@ void search_map(char* seq)
     }
     printf("Mapping complete. Now, we're sorting data.\n");
     sort(v.begin(), v.end());
+    vector<int>::iterator low,up;
     for(int i=0; i<v.size(); i++) {
-    		if(v[i]>=0){
-    			fprintf(outputFile, "%d\n", v[i]);
+    		if(v[i]<0){
+    			continue;
+    		}
+    		else{
+    			vector<int>::iterator low,up;
+    			low = lower_bound(v.begin(),v.end(),v[i]);
+    			up = upper_bound(v.begin(),v.end(),v[i]);
+    			fprintf(outputFile, "%ld\n",v[i],up-low);
     		}
         }
     printf("Sorting complete.\n");
+    printf("Complete.\n");
 
     //fprintf(outputFile,"Complete\n");
     //fprintf(outputFile,"---------------------------------\n");
@@ -125,6 +133,7 @@ int main(int argc, char **argv) {
         //break;
     }
     printf("--- Read chromosome file : c = %d complete ---\n",targetCms);
+    printf("Reading file complete. Now, we're mapping data.\n");
     CloseFASTA(ffp);
 
     //for(auto it = kmap.begin(); it != kmap.end(); it++) {
