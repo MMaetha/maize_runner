@@ -58,7 +58,7 @@ void search_map(char* seq)
         seq[i+k] = tmp;
         //free(kgram);
     }
-    printf("Mapping complete. Now, we're sorting data.\n");
+    printf("Mapping completed. Now, we're sorting data.\n");
     sort(v.begin(), v.end());
     vector<int>::iterator low,up;
     for(int i=0; i<v.size(); i++) {
@@ -72,8 +72,8 @@ void search_map(char* seq)
     			fprintf(outputFile, "%d , %ld\n",v[i],up-low);
     		}
         }
-    printf("Sorting complete.\n");
-    printf("Complete.\n");
+    printf("Sorting completed.\n");
+    printf("Completed.\n");
 
     //fprintf(outputFile,"Complete\n");
     //fprintf(outputFile,"---------------------------------\n");
@@ -95,14 +95,12 @@ int main(int argc, char **argv) {
         printf("Invalid parameters\n");
         exit(1);
     }
-    else printf("bitch!\n");
 
     outputFile = fopen(argv[2],"a");
     if(outputFile == NULL){
           printf("Cannot open output file.\n");
         exit(1);
     }
-    else printf("bitch!\n");
 
     FASTAFILE *ffp;
     char *seq;
@@ -110,8 +108,9 @@ int main(int argc, char **argv) {
     int L;
     int c;
     /* argv[1] is the name of a FASTA file */
+    printf("opening FASTA file.\n");
     ffp = OpenFASTA("sample_seq/IRGSP-1.0_genome.fasta");
-    printf("openFASTA complete\n");
+    printf("openFASTA completed\n");
     c = 1;
     int targetCms = atoi(argv[1]);
     printf("targetCms = %d\n", targetCms);
@@ -132,8 +131,8 @@ int main(int argc, char **argv) {
         c++;
         //break;
     }
-    printf("--- Read chromosome file : c = %d complete ---\n",targetCms);
-    printf("Reading file complete. Now, we're mapping data.\n");
+    printf("--- Read chromosome file : c = %d completed ---\n",targetCms);
+    printf("Reading file completed. Now, we're mapping data.\n");
     CloseFASTA(ffp);
 
     //for(auto it = kmap.begin(); it != kmap.end(); it++) {
