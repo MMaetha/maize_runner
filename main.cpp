@@ -6,6 +6,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <cmath>
 
 using namespace std;
 
@@ -70,7 +71,7 @@ void search_map(char* seq)
     			freq = up-low;
     			if(v[i+1]!=v[i]){
      				fprintf(outputFile, "%d , %d\n",v[i],freq);
-    			}
+     			}	
    	   		}       
     	}
     printf("Sorting completed.\n");
