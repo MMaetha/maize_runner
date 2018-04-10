@@ -61,6 +61,7 @@ void search_map(char* seq)
     sort(v.begin(), v.end());
     vector<int>::iterator low,up;
     int freq;
+    int max=-100,place=-100;
     for(int i=0; i<v.size(); i++) {
     		if(v[i]<0){
     			continue;
@@ -71,9 +72,14 @@ void search_map(char* seq)
     			freq = up-low;
     			if(v[i+1]!=v[i]){
      				fprintf(outputFile, "%d , %d\n",v[i],freq);
-     			}	
+     				}
+     			}
+     		if(freq>max){
+     			max = freq;
+     			place = i;
    	   		}       
     	}
+    printf("Maximum frequency is %d at %d \n",max,place);
     printf("Sorting completed.\n");
     printf("Completed.\n");
 
