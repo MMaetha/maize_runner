@@ -98,6 +98,12 @@ void upup(char* st)
     }
 }
 
+int min(int x, int y, int z)
+{
+	return min(min(x, y), z);
+}
+
+
 int main(int argc, char **argv) {
     if(argc != 3){
         printf("Invalid parameters\n");
