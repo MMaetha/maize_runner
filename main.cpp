@@ -36,6 +36,33 @@ void build_map(char* seq)
     // printf("Complete\n");
 }
 
+int min(int x, int y, int z){
+   	return min(min(x, y), z);
+}
+
+int minEditDist(string str1, string str2){	
+
+		int m = str1.length();
+		int n = str2.length();
+	    int dp[m+1][n+1];
+	    for (int i=0; i<=m; i++)
+	    {
+	        for (int j=0; j<=n; j++)
+	        {
+	            if (i==0)
+	            	dp[i][j] = j; 
+	            else if (j==0)
+	            	dp[i][j] = i; 
+	            else if (str1[i-1] == str2[j-1])
+	                dp[i][j] = dp[i-1][j-1];
+	            else
+	                dp[i][j] = 1 + min(dp[i][j-1], dp[i-1][j], dp[i-1][j-1]); //Smith-waterman
+	        }
+	    }
+	    int errScore = dp[m][n];
+	    return errScore;
+	}
+
 void search_map(char* seq)
 {
     int len = strlen(seq);
@@ -60,8 +87,10 @@ void search_map(char* seq)
     printf("Mapping completed.\n");
     sort(v.begin(), v.end());
     vector<int>::iterator low,up;
+    vector<int> highRank,highFreq;
     int freq;
     int max=-100,place=-100;
+    int percentile = 85;
     for(int i=0; i<v.size(); i++) {
     		if(v[i]<0){
     			continue;
@@ -80,34 +109,29 @@ void search_map(char* seq)
    	   		}       
     	}
     printf("Maximum frequency is %d at %d \n",max,place);
+
+    for(int i=0; i<v.size(); i++) {
+    		if(v[i]<0){
+    			continue;
+    		}
+    		else{
+    			low = lower_bound(v.begin(),v.end(),v[i]);
+    			up = upper_bound(v.begin(),v.end(),v[i]);
+    			freq = up-low;
+     			}
+     		if(freq>percentile*max/100){
+     			highRank.push_back(v[i]);
+     			highFreq.push_back(freq);
+   	   		}       
+    	}
+
+    printf("High frequency place (> %d %)\n",percentile);
+    for(int i=0; i<highRank.size(); i++) {
+    	if(highRank[i+1]!=highRank[i])
+    	printf("At %d has %d freq.\n", highRank[i], highFreq[i]);
+     }
+
     printf("Sorting completed.\n");
-	
-	int min(int x, int y, int z){
-    	return min(min(x, y), z);
-	}
-
-	int minEditDist(string str1, string str2){	
-
-		int m = str1.length();
-		int n = str2.length();
-	    int dp[m+1][n+1];
-	    for (int i=0; i<=m; i++)
-	    {
-	        for (int j=0; j<=n; j++)
-	        {
-	            if (i==0)
-	            	dp[i][j] = j; 
-	            else if (j==0)
-	            	dp[i][j] = i; 
-	            else if (str1[i-1] == str2[j-1])
-	                dp[i][j] = dp[i-1][j-1];
-	            else
-	                dp[i][j] = 1 + min(dp[i][j-1], dp[i-1][j], dp[i-1][j-1]); //Smith-waterman
-	        }
-	    }
-	    return dp[m][n];
-	}
-	
 	//printf("Similarity score = %.2f",)
     printf("Completed.\n");
     //fprintf(outputFile,"Complete\n");
