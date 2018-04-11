@@ -133,7 +133,6 @@ void search_map(char* seq)
 
     printf("Sorting completed.\n");
 	//printf("Similarity score = %.2f",)
-    printf("Completed.\n");
     //fprintf(outputFile,"Complete\n");
     //fprintf(outputFile,"---------------------------------\n");
 }
@@ -223,9 +222,13 @@ int main(int argc, char **argv) {
         //getchar();
         c++;
     }
+    
+    
     CloseFASTA(ffp);
 
     fclose(outputFile);
+
+    printf("Completed.\n");
 
     exit(0);
 }
