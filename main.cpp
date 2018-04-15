@@ -89,8 +89,8 @@ void search_map(char* seq)
     vector<int>::iterator low,up;
     vector<int> highRank,highFreq;
     int freq;
-    int max=-100,place=-100;
     int percentile = 85;
+    int max=-100,place=-100;
     for(int i=0; i<v.size(); i++) {
     		if(v[i]<0){
     			continue;
@@ -165,6 +165,7 @@ int main(int argc, char **argv) {
     char *name;
     int L;
     int c;
+    string chr,TE;
     /* argv[1] is the name of a FASTA file */
     printf("opening FASTA file.\n");
     ffp = OpenFASTA("sample_seq/IRGSP-1.0_genome.fasta");
@@ -179,6 +180,7 @@ int main(int argc, char **argv) {
         //printf("%s\n\n", seq);
         //printf("Read chromosome file : c = %d\n", c);
         if(c==targetCms){
+        	chr = seq;
             upup(seq);
             build_map(seq);
         }
@@ -214,6 +216,7 @@ int main(int argc, char **argv) {
         //build_map(seq);
         upup(seq);
         search_map(seq);
+        TE = seq;
         free(seq);
         free(name);
 
@@ -225,7 +228,7 @@ int main(int argc, char **argv) {
     
     
     CloseFASTA(ffp);
-
+  	//printf("Max score is %.2f" (TE.length()-minEditDist(chr[max],TE))/TE.length());
     fclose(outputFile);
 
     printf("Completed.\n");
