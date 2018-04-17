@@ -15,8 +15,6 @@ FILE* outputFile;
 
 multimap<string,int> kmap;
 int k = 5;
-int peak=-100,place=-100;
-
 
 void build_map(char* seq)
 {
@@ -85,6 +83,7 @@ void search_map(char* seq)
     vector<int> highRank,highFreq;
     int freq;
     int percentile = 85;
+    int max=-100,place=-100;
     for(int i=0; i<v.size(); i++) {
     		if(v[i]<0){
     			continue;
@@ -97,12 +96,12 @@ void search_map(char* seq)
      				fprintf(outputFile, "%d , %d\n",v[i],freq);
      				}
      			}
-     		if(freq>peak){
-     			peak = freq;
+     		if(freq>max){
+     			max = freq;
      			place = i;
    	   		}       
     	}
-    printf("Maximum frequency is %d at %d \n",peak,place);
+    printf("Maximum frequency is %d at %d \n",max,place);
 
     for(int i=0; i<v.size(); i++) {
     		if(v[i]<0){
@@ -113,7 +112,7 @@ void search_map(char* seq)
     			up = upper_bound(v.begin(),v.end(),v[i]);
     			freq = up-low;
      			}
-     		if(freq>percentile*peak/100){
+     		if(freq>percentile*max/100){
      			highRank.push_back(v[i]);
      			highFreq.push_back(freq);
    	   		}       
@@ -220,11 +219,16 @@ int main(int argc, char **argv) {
         c++;
     }
     
+    
     CloseFASTA(ffp);
+<<<<<<< HEAD
     printf("%d",peak);
     string chr_short = chr.substr(place-200,place+200);
     double matchScore = editDist(chr_short,TE,chr_short.length(),TE.length());
   	printf("Max score is %.2f",matchScore);
+=======
+  	//printf("Max score is %.2f" (TE.length()-minEditDist(chr[max],TE))/TE.length());
+>>>>>>> parent of 54fcaef... change ambiguous variable
     fclose(outputFile);
 
     printf("Completed.\n");
