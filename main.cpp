@@ -231,8 +231,12 @@ int main(int argc, char **argv) {
     //string chr_short = chr.substr(place-200,place+200);
     //double matchScore = editDist(chr_short,TE,chr_short.length(),TE.length());
   	//printf("peak score is %.2f",matchScore);
-    fclose(outputFile);
 
+    fclose(outputFile);
+  	string test1 = "ACACCTGT";
+  	string test2 = "ACCAGTA";
+  	double matchScore = minEditDist(test1,test2);
+  	printf("peak score is %lf",matchScore);
     printf("Completed.\n");
 
     exit(0);
