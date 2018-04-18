@@ -125,7 +125,7 @@ void search_map(char* seq)
    	   		}       
     	}
 
-    printf("High frequency place (> %d %)\n",percentile);
+    printf("High frequency place (> %d %%)\n",percentile);
     for(int i=0; i<highRank.size(); i++) {
     	if(highRank[i+1]!=highRank[i])
     	printf("At %d has %d freq.\n", highRank[i], highFreq[i]);
@@ -233,10 +233,10 @@ int main(int argc, char **argv) {
   	//printf("peak score is %.2f",matchScore);
 
     fclose(outputFile);
-  	string test1 = "ACACCTGT";
-  	string test2 = "ACCAGTA";
+  	string test1 = chr.substr(place-200,place+200);
+  	string test2 = TE;
   	double matchScore = (test2.length()-minEditDist(test1,test2))*100.0/test2.length();
-  	printf("peak score is %lf %\n",matchScore);
+  	printf("peak score is %lf %%\n",matchScore);
     printf("Completed.\n");
 
     exit(0);
