@@ -127,13 +127,14 @@ void search_map(char* seq)
    	   		}       
     	}
 
-    printf("High frequency place (> %d %%)\n",percentile);
-    for(int i=0; i<highRank.size(); i++) {
-    	if(highRank[i+1]!=highRank[i])
-    	printf("At %d has %d freq.\n", highRank[i], highFreq[i]);
-     }
+    
+    // for(int i=0; i<highRank.size(); i++) {
+    // 	if(highRank[i+1]!=highRank[i])
+    // 	printf("At %d has %d freq.\n", highRank[i], highFreq[i]);
+    //  }
 
     printf("Sorting completed.\n");
+    printf("High frequency place (> %d %%)\n",percentile);
 	//printf("Similarity score = %.2f",)
     //fprintf(outputFile,"Complete\n");
     //fprintf(outputFile,"---------------------------------\n");
@@ -236,14 +237,15 @@ int main(int argc, char **argv) {
    	//printf("%d\n", place);
    	highRank.erase( unique( highRank.begin(), highRank.end() ), highRank.end() );
 
+    vector<double> matchScore;
    	for(int i=0;i<highRank.size();i++){
   	string test1 = chr.substr(highRank[i]-200, 400);
   	string test2 = TE;
   	//printf("%d - %d\n", test1.length(), TE.length());
   	int md = minEditDist(test1,test2);
   	//printf("%d\n",md);
-  	double matchScore = (test1.length()-md)*100.0/test1.length();
-  	printf("Score at %d is %.2lf %%\n",highRank[i],matchScore);
+  	matchScore.push_back((test1.length()-md)*100.0/test1.length());
+  	printf("Score at %d is %.2lf %%\n",highRank[i],matchScore[i]);
   	}
     printf("Completed.\n");
 
