@@ -234,13 +234,20 @@ int main(int argc, char **argv) {
 
     fclose(outputFile);
    	//printf("%d\n", place);
+   	highRank.erase( unique( highRank.begin(), highRank.end() ), highRank.end() );
+   	highFreq.erase( unique( highFreq.begin(), highFreq.end() ), highFreq.end() );
+
+   	for(int i=0;i<highRank.size();i++){
+   		printf("%d %d\n",highRank[i],highFreq[i]);
+   	}
+
   	string test1 = chr.substr(place-200, 400);
   	string test2 = TE;
   	//printf("%d - %d\n", test1.length(), TE.length());
   	int md = minEditDist(test1,test2);
   	//printf("%d\n",md);
   	double matchScore = (test1.length()-md)*100.0/test1.length();
-  	printf("peak score is %lf %%\n",matchScore);
+  	printf("peak score is %.2lf %%\n",matchScore);
     printf("Completed.\n");
 
     exit(0);
