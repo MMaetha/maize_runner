@@ -108,7 +108,7 @@ void search_map(char* seq)
      			place = i;
    	   		}       
     	}
-    printf("peakimum frequency is %d at %d \n",peak,place);
+    printf("Maximum frequency is %d at %d \n",peak,place);
 
     for(int i=0; i<v.size(); i++) {
     		if(v[i]<0){
@@ -235,8 +235,8 @@ int main(int argc, char **argv) {
     fclose(outputFile);
   	string test1 = "ACACCTGT";
   	string test2 = "ACCAGTA";
-  	double matchScore = minEditDist(test1,test2);
-  	printf("peak score is %lf",matchScore);
+  	double matchScore = (test2.length()-minEditDist(test1,test2))*100.0/test2.length();
+  	printf("peak score is %lf %\n",matchScore);
     printf("Completed.\n");
 
     exit(0);
