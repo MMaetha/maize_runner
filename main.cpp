@@ -41,15 +41,17 @@ int min(int x, int y, int z){
    	return min(min(x, y), z);
 }
 
+int dp[10000][10000];
 int minEditDist(string str1, string str2){	
 
 		int m = str1.length();
 		int n = str2.length();
-	    int dp[m+1][n+1];
+		memset(dp,0,sizeof(dp));
 	    for (int i=0; i<=m; i++)
 	    {
 	        for (int j=0; j<=n; j++)
 	        {
+	        	//printf("%d %d\n",i,j);
 	            if (i==0)
 	            	dp[i][j] = j; 
 	            else if (j==0)
@@ -64,6 +66,7 @@ int minEditDist(string str1, string str2){
 	    return errScore;
 	}
 
+vector<int> highRank,highFreq;
 void search_map(char* seq)
 {
     int len = strlen(seq);
@@ -88,7 +91,6 @@ void search_map(char* seq)
     printf("Mapping completed.\n");
     sort(v.begin(), v.end());
     vector<int>::iterator low,up;
-    vector<int> highRank,highFreq;
     int freq;
     int percentile = 85;
     for(int i=0; i<v.size(); i++) {
@@ -200,10 +202,10 @@ int main(int argc, char **argv) {
     //}
 
     //return 0;
-
+    int d = 0;
     ffp = OpenFASTA("sample_seq/TAIR9_TE.fas");
-    c = 2;
     while (ReadFASTA(ffp, &seq, &name, &L)) {
+    	if(d==2) break;
         //printf("%d\n",c);
         //printf("name: %s\n", name);
         //printf("size: %d\n", L);
@@ -217,15 +219,13 @@ int main(int argc, char **argv) {
         upup(seq);
         search_map(seq);
         TE = seq;
+      //  printf("%lu\n",TE.length());
         free(seq);
         free(name);
-
-        if(c>=2) break;
-            printf("Search Map : c = %d\n", c);
+        //printf("Search Map : c = %d\n", c);
         //getchar();
-        c++;
+        d++;
     }
-    
     
     CloseFASTA(ffp);
     //string chr_short = chr.substr(place-200,place+200);
@@ -233,9 +233,13 @@ int main(int argc, char **argv) {
   	//printf("peak score is %.2f",matchScore);
 
     fclose(outputFile);
-  	string test1 = chr.substr(place-200,place+200);
+   	//printf("%d\n", place);
+  	string test1 = chr.substr(place-200, 400);
   	string test2 = TE;
-  	double matchScore = (test2.length()-minEditDist(test1,test2))*100.0/test2.length();
+  	//printf("%d - %d\n", test1.length(), TE.length());
+  	int md = minEditDist(test1,test2);
+  	//printf("%d\n",md);
+  	double matchScore = (test1.length()-md)*100.0/test1.length();
   	printf("peak score is %lf %%\n",matchScore);
     printf("Completed.\n");
 

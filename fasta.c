@@ -143,8 +143,10 @@ ReadFASTA(FASTAFILE *ffp, char **ret_seq, char **ret_name, int *ret_L)
 
 	  seq[n] = *s;                  /* store the character, bump length n */
 	  n++;
+
 	  if (nalloc == n)	        /* are we out of room in seq? if so, expand */
 	    {			        /* (remember, need space for the final '\0')*/
+        //printf("%d %d\n",nalloc,seq);
 	      nalloc *= 2;
 	      seq = (char *) realloc(seq, sizeof(char) * nalloc);
 	    }
