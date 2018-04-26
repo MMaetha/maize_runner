@@ -171,7 +171,7 @@ int main(int argc, char **argv) {
     string chr,TE;
     /* argv[1] is the name of a FASTA file */
     printf("opening FASTA file.\n");
-    ffp = OpenFASTA("sample_seq/IRGSP-1.0_genome.fasta");
+    ffp = OpenFASTA("sample_seq/short_IRGSP-1.0_genome.fasta");
     printf("openFASTA completed\n");
     c = 1;
     int targetCms = atoi(argv[1]);
